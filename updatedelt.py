@@ -31,3 +31,10 @@ def update_data(ID:int,detail:student):
         raise HTTPException(status_code=404, detail="Item not found")
     DB[ID]=detail
     return DB
+
+@app.delete("/remove/{ID}")
+def update_data(ID:int):
+    if ID not in DB:
+        raise HTTPException(status_code=404, detail="Item not found")
+    del DB[ID]
+    return DB
